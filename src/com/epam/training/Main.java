@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        //Edit Mode
         Member[] m = new Member[3];
         for (int i = 0; i < m.length; i++) {
             System.out.print("Please enter your name: ");
