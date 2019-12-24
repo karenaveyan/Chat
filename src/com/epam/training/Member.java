@@ -15,11 +15,16 @@ public class Member {
     }
 
     public int inputAction() {
-        Scanner s = new Scanner(System.in);
+        action = 0;
         while (action != 1 && action != 2) {
-            System.out.print(name + ", please write your action number(1 - Send message, 2 - Exit chat): ");
+            System.out.print(this.name + ", please write your action number(1 - Send message, 2 - Exit chat): ");
+            Scanner s = new Scanner(System.in);
             action = s.nextInt();
         }
+        return action;
+    }
+
+    public int getAction() {
         return action;
     }
 
@@ -37,6 +42,10 @@ public class Member {
     }
 
     public static void printHistory() {
-        System.out.println("Chat history.\n"+history);
+        if (history == "") {
+            System.out.println("Chat history.\nThe chat is empty...");
+        } else {
+            System.out.println("Chat history.\n" + history);
+        }
     }
 }
