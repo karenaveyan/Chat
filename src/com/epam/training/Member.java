@@ -1,14 +1,10 @@
 package com.epam.training;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Member {
-    private int action;
     private String name;
-    private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-    private static String history = "";
+    private int action;
 
     public Member(String name) {
         this.name = name;
@@ -34,18 +30,9 @@ public class Member {
             Scanner t = new Scanner(System.in);
             String message = t.nextLine();
             System.out.println();
-            LocalDateTime date = LocalDateTime.now();
-            history += dtf.format(date) + " (date) " + name + ": " + message + "\n";
+            Chat.updateHistory(name, message);
         } else {
             System.out.println("Ok, it's your choice.\n");
-        }
-    }
-
-    public static void printHistory() {
-        if (history == "") {
-            System.out.println("Chat history.\nThe chat is empty...");
-        } else {
-            System.out.println("Chat history.\n" + history);
         }
     }
 }
