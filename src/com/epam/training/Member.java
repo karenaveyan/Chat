@@ -4,28 +4,34 @@ import java.util.Scanner;
 
 public class Member {
     private String name;
-    private int action;
+    private Action action;
 
     public Member(String name) {
         this.name = name;
     }
 
-    public int inputAction() {
-        action = 0;
-        while (action != 1 && action != 2) {
+    public Action inputAction() {
+        while (true) {
             System.out.print(this.name + ", please write your action number(1 - Send message, 2 - Exit chat): ");
             Scanner s = new Scanner(System.in);
-            action = s.nextInt();
+            int input = s.nextInt();
+            if (input == 1) {
+                action = Action.WRITE;
+                return action;
+            }
+            if (input == 2) {
+                action = Action.EXIT;
+                return action;
+            }
         }
+    }
+
+    public Action getAction() {
         return action;
     }
 
-    public int getAction() {
-        return action;
-    }
-
-    public void action(int action) {
-        if (action == 1) {
+    public void action() {
+        if (action == Action.WRITE) {
             System.out.print("Type your message: ");
             Scanner t = new Scanner(System.in);
             String message = t.nextLine();

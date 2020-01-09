@@ -32,8 +32,10 @@ public class Chat {
         Random r = new Random(members.length);
         while (activeMembers.size() != 0) {
             int i = r.nextInt(activeMembers.size());
-            activeMembers.get(i).action(activeMembers.get(i).inputAction());
-            if (activeMembers.get(i).getAction() == 2) {
+            Member current = activeMembers.get(i);
+            current.inputAction();
+            current.action();
+            if (current.getAction() == Action.EXIT) {
                 activeMembers.remove(i);
             }
         }
